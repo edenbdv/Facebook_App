@@ -1,0 +1,36 @@
+
+.input-group {
+    height: 40px;
+
+}
+
+.form-control {
+    text-align: center;
+}
+
+.box-container {
+    border: 0;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px;
+    height: 80px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Styles for dark mode */
+.night-mode .box-container {
+    background-color: #454444; 
+    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.1); 
+}
+
+.night-mode .form-control {
+    color:white;
+    background-color: #8a8888;
+    border-color: black;  
+}
+
+.night-mode .form-control::placeholder {
+    color: white; /* Set placeholder text color to white */
+}

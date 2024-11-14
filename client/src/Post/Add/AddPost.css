@@ -1,0 +1,42 @@
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%; 
+    max-width: 600px; 
+
+    
+}
+
+.popup textarea {
+    width: 100%;
+    height: 300px; 
+}
+
+.popup button {
+    margin-top: 10px;
+}
+
+.close-button {
+    background-color: transparent;
+    border: 0;
+}
+
+
+.night-mode .popup-content{
+    background-color: #454444;
+}

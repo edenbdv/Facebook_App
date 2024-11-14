@@ -1,0 +1,21 @@
+/*FeedContainer.css*/
+
+.app-container {
+  padding-top: 1rem; 
+  width: 100%;
+
+}
+
+.container-fluid  {
+  width: 100%;
+
+}
+
+@media (max-width: 768px) {
+    .menu-container {
+      display: none;
+    }
+  }
+
+  
+  

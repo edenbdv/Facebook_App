@@ -1,0 +1,36 @@
+.navbar {
+    background: linear-gradient(135deg, #0c2d48, #145da0, #2e8bc0, #b1d4e0);    
+
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 40px; 
+    padding-bottom: 5px;
+    width: 100%; 
+    top: 0; 
+    left: 0; 
+}
+
+
+/* Rounded corners for larger screen input */
+.d-none.d-lg-block {
+    border-radius: 100px; 
+}
+  
+  /* Rounded corners for smaller screen input */
+.d-lg-none {
+    border-radius: 100px; 
+}
+
+.btn-secondary-outline:hover {
+    background-color: rgba(222, 217, 217, 0.676);
+}
+
+/* Styles for dark mode */
+.night-mode .navbar {
+    background-color: #454444; 
+    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.1); 
+    color: #ffffff; 
+}
+
+.night-mode .btn-logout {
+    color: white; 
+}

@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+  bloom_filter:
+    build:
+      context: ./bloom_filter
+    ports:
+      - "5555:5555"
+    networks:
+      - backend-network
+  
+  mongo:
+    image: mongo:4.4  
+    ports:
+      - "27017:27017"  
+    volumes:
+      - mongodb-data:/data/db  
+    networks:
+      - backend-network
+
+  app:
+    build: ./app
+    ports:
+      - "12346:12346" 
+    environment:
+      - CONNECTION_STRING=mongodb://mongo:27017/mydb  
+      - PORT=12346  
+    depends_on:
+      - mongo  # Ensure MongoDB and bloom_filter starts before the app
+      - bloom_filter
+    networks:
+      - backend-network
+  
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - app
+    networks:
+      - frontend-network
+      - backend-network
+
+  
+volumes:
+  mongodb-data:
+
+networks:
+  backend-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge

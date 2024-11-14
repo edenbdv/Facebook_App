@@ -1,0 +1,30 @@
+/* style.css */
+.profile-container {
+    background: linear-gradient(135deg, #0c2d48, #145da0, #2e8bc0, #b1d4e0);    
+    width: 100% !important; 
+    height: 200px; 
+    max-width: none;
+    color: #fff; 
+    
+}
+
+body {
+    width: 100%;
+    margin: 0; 
+    padding: 0; 
+}
+
+
+.profile-picture {
+    width: 150px; 
+    height: 150px; 
+}
+
+
+
+@media (max-width: 768px) {
+    .profile-picture {
+        width: 100px; 
+        height: 100px; 
+    }
+  }

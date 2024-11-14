@@ -1,0 +1,13 @@
+/* LoginForm.css */
+
+
+ .btn btn-primary {
+  display: grid;
+  grid-gap: 2rem;
+ }
+
+
+.error {
+    color: red;
+    font-size: 0.8rem; 
+}

@@ -1,0 +1,82 @@
+/* Menu.css */
+.menu-container {
+    position: fixed;
+}
+
+.list-group {
+    padding-top: 10px;
+    border: 0;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.list-group-item {
+    border: 0;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.list-group-item:hover{
+    background-color: rgba(0, 0, 255, 0.208);
+    cursor: pointer;
+    border-radius: 50;
+}
+
+.menu-text {
+    margin-left: 10px;
+    font-size: 25;
+    
+}
+
+.menu-icon {
+    font-size: 1.5rem; 
+    color:blue;
+}
+
+.night-mode .menu-text {
+    color: white;
+}
+
+
+
+.flex-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.icon-above {
+    margin-right: 8px; 
+}
+
+@media (max-width: 768px) {
+    .flex-buttons {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .flex-buttons .list-group-item {
+        flex: 1;
+        padding: 0.5rem;
+        text-align: center;
+    }
+
+    .icon-text {
+        flex-direction: column;
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .icon-above {
+        margin-right: 0; 
+        margin-bottom: 4px; 
+    }
+
+}

@@ -1,0 +1,19 @@
+.custom-textarea {
+    height: 15px !important;
+}
+
+
+.comments-container .comment-content {
+    background-color: #f0f0f0; 
+    padding: 10px; 
+    border-radius: 8px; 
+  }
+  
+  .comments-container .display-name {
+    font-weight: bold; 
+  }
+  
+
+  .night-mode .comments-container .comment-content {
+    background-color: darkgray;
+}
