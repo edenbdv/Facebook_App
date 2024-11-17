@@ -13,13 +13,13 @@ app.use(bodyParser.urlencoded({ limit: '180mb', extended: true }));
 const customEnv = require('custom-env');
 customEnv.env(process.env.NODE_ENV, './config');
 
-CLIENT = process.env.CLIENT
+PORT_CLIENT = process.env.PORT_CLIENT
 IP_WEB_SERVER = process.env.IP_WEB_SERVER
 
 const cors = require('cors');
-// app.use(cors());
+
 const corsOptions = {
-    origin: `http://${IP_WEB_SERVER}:${CLIENT}`, 
+    origin: `http://${IP_WEB_SERVER}:${PORT_CLIENT}`, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
