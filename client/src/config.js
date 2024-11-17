@@ -1,6 +1,6 @@
 const config = {
     server: {
-        ip: '13.49.76.183',
+        ip: 'localhost',
         port: 12346
     }
 };
