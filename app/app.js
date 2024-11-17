@@ -10,14 +10,25 @@ app.use(express.json()); // req will be in json
 app.use(bodyParser.json({ limit: '180mb' }));
 app.use(bodyParser.urlencoded({ limit: '180mb', extended: true }));
 
-
-const cors = require('cors');
-app.use(cors());
-
-
-
 const customEnv = require('custom-env');
 customEnv.env(process.env.NODE_ENV, './config');
+
+CLIENT = process.env.CLIENT
+
+const cors = require('cors');
+// app.use(cors());
+const corsOptions = {
+    origin: `http://localhost:${CLIENT}`, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  };
+  
+  app.use(cors(corsOptions));  
+  
+
+
+
 
 CONNECTION_STRING = process.env.CONNECTION_STRING
 PORT = process.env.PORT
