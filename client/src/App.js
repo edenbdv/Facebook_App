@@ -4,6 +4,7 @@ import LoginContainer from './LoginContainer/LoginContainer';
 import FeedContainer from './FeedContainer/FeedContainer';
 import SignUpContainer from './SignUpContainer/SignUpContainer';
 import Profile from './Screen/Profile/Profile';
+import config from './config.js';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -20,7 +21,6 @@ function App() {
     }
   }, []);
 
-  const config = require('./config.js');
   console.log("ip:", config.server.ip); // This will log the IP address
 
 
