@@ -14,11 +14,12 @@ const customEnv = require('custom-env');
 customEnv.env(process.env.NODE_ENV, './config');
 
 CLIENT = process.env.CLIENT
+IP_WEB_SERVER = process.env.IP_WEB_SERVER
 
 const cors = require('cors');
 // app.use(cors());
 const corsOptions = {
-    origin: `http://localhost:${CLIENT}`, 
+    origin: `http://${IP_WEB_SERVER}:${CLIENT}`, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
