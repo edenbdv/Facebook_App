@@ -28,7 +28,8 @@ function LoginForm({ onLogin }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let errors = {};
-    
+        console.log('Config:', config);
+
         try {
             const response = await fetch(`http://${config.server.ip}:${config.server.port}/api/tokens`, {
                 method: 'POST',
@@ -40,7 +41,7 @@ function LoginForm({ onLogin }) {
                     password: formData.password
                 })
             });
-    
+            console.log()
             if (response.ok) {
                 const tokenData = await response.json();
                 // Assuming tokenData contains the JWT token
