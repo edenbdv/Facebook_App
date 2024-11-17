@@ -20,6 +20,10 @@ function App() {
     }
   }, []);
 
+  const config = require('./config.js');
+  console.log("ip:", config.server.ip); // This will log the IP address
+
+
   return (
     <div>
       <BrowserRouter>
