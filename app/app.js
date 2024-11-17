@@ -19,7 +19,8 @@ IP_WEB_SERVER = process.env.IP_WEB_SERVER
 const cors = require('cors');
 
 const corsOptions = {
-    origin: `http://${IP_WEB_SERVER}:${PORT_CLIENT}`, 
+    // origin: `http://${IP_WEB_SERVER}:${PORT_CLIENT}`, 
+    origin: `http://client:${PORT_CLIENT}`,  // Allow requests from the frontend container
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
