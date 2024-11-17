@@ -204,7 +204,7 @@ export const createComment = async (postId, text, token) => {
 
 export const  updateComment = async (postId, commentId ,text, token) => {
 
-    const url = `http://localhost:12346/api/posts/${postId}/comments/${commentId}`;
+    const url = `http://${config.server.ip}:${config.server.port}/api/posts/${postId}/comments/${commentId}`;
 
     const response = await fetch(url, {
         method: "PATCH",
@@ -226,7 +226,7 @@ export const  updateComment = async (postId, commentId ,text, token) => {
 
 export const  deleteComment =  async (postId, commentId ,token) => {
 
-    const response = await fetch(`http://localhost:12346/api/posts/${postId}/comments/${commentId}`, {
+    const response = await fetch(`http://${config.server.ip}:${config.server.port}/api/posts/${postId}/comments/${commentId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -246,7 +246,7 @@ export const  deleteComment =  async (postId, commentId ,token) => {
 
 export const getLikes = async (postId, token) => {
 
-    const response = await fetch(`http://localhost:12346/api/posts/${postId}/likes`, {
+    const response = await fetch(`http://${config.server.ip}:${config.server.port}/api/posts/${postId}/likes`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -268,7 +268,7 @@ export const getLikes = async (postId, token) => {
 
 export const likePost = async (postId, token) => {
 
-    const response = await fetch(`http://localhost:12346/api/posts/${postId}/likes`, {
+    const response = await fetch(`http://${config.server.ip}:${config.server.port}/api/posts/${postId}/likes`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -290,7 +290,7 @@ export const likePost = async (postId, token) => {
 
 export const unlikePost = async (postId, token) => {
 
-    const response = await fetch(`http://localhost:12346/api/posts/${postId}/likes`, {
+    const response = await fetch(`http://${config.server.ip}:${config.server.port}api/posts/${postId}/likes`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
