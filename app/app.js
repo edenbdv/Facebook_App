@@ -49,6 +49,8 @@ const tokens = require('./routes/token');
 app.use('/api/tokens', tokens);
 
 
-app.listen(PORT);
+// app.listen(PORT);
 
-
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Backend listening on port ${PORT}`);
+});
