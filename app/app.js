@@ -14,13 +14,12 @@ const customEnv = require('custom-env');
 customEnv.env(process.env.NODE_ENV, './config');
 
 PORT_CLIENT = process.env.PORT_CLIENT
-IP_WEB_SERVER = process.env.IP_WEB_SERVER
+IP_CLIENT = process.env.IP_CLIENT
 
 const cors = require('cors');
 
 const corsOptions = {
-    // origin: `http://${IP_WEB_SERVER}:${PORT_CLIENT}`, 
-    origin: `http://client:${PORT_CLIENT}`,  // Allow requests from the frontend container
+    origin: `http://${IP_CLIENT}:${PORT_CLIENT}`, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
