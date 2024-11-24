@@ -1,6 +1,6 @@
 const config = {
     server: {
-        ip: '13.60.61.247',  // Use the Docker service name
+        ip: '13.60.61.247',  
         port: 12346
     }
 };
