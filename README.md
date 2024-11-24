@@ -2,6 +2,9 @@
 <img width="916" alt="‏‏Feed" src="https://github.com/user-attachments/assets/df6134ee-8e84-4a26-99f9-36c00f3d00c3">
 
 ## Links:
+server:
+https://github.com/edenbdv/Facebook_clone-Server.git
+
 client web:
 https://github.com/edenbdv/Facebook_clone-Client.git
 
@@ -15,8 +18,6 @@ https://github.com/edenbdv/Facebook-clone-android.git
 "Foobar" is a social networking application similar to Facebook, designed to connect people and support sharing of updates and photos.
 This repository is for the server, designed to mimic the functionalities of Facebook. It provides support for both Android and web clients, allowing developers to simulate interactions with the Facebook API without accessing the actual Facebook servers. The server is structured following the MVC (Model-View-Controller) architecture.
 
-
-  
 ## Technologies Used (whole project)
 
 **Backend:** The backend of Foobar is designed to handle server-side logic and routing efficiently. Key features include:
@@ -33,6 +34,28 @@ This repository is for the server, designed to mimic the functionalities of Face
 - **JavaScript:** Provides dynamic functionality and interactivity.
 - **React:** Used for building reusable components and managing state efficiently.
 - **HTML & CSS:** Structures and styles the user interface, ensuring a responsive design.
+
+## Deployment
+
+### AWS EC2
+- The application is deployed on an Amazon Linux EC2 instance, providing a reliable and scalable cloud infrastructure.
+- Security groups are configured to allow access to required services:
+  - Frontend on port `3000`
+  - Backend on port `12346`
+  - Database on port `27017`
+  - BloomFilter service on port `5555`
+- Ensures high availability with the potential to add more instances or services as needed.
+
+### Dockerized Setup
+- Entire application stack (frontend, backend, database) is containerized using Docker.
+- Docker Compose orchestrates multiple containers, allowing seamless interaction between services via internal networking.
+
+### Continuous Integration and Deployment (CI/CD)
+- Incorporated CI/CD pipelines for automated testing, building, and deployment of the bloom-filter service.
+- **GitHub Actions** is used to streamline updates and ensure smooth rollouts:
+  - For every pull request into the main branch, all tests for the bloom-filter service are automatically run.
+  - For every release version of the code, a dockerized version of the service is automatically built and pushed to a private repository on **DockerHub**.
+
 
 ## Features
 
@@ -99,46 +122,74 @@ This user-friendly interface ensures that managing personal profiles and social 
 - Easy-to-use routes for handling **API** requests.
 - **Bloom Filter:** An additional **multi-threaded server** that prevents users from creating posts containing forbidden URLs via **web sockets**, enhancing security by blocking access to restricted or harmful content. This functionality is applicable only when using the Bloom Filter server. By default, there is a blacklist containing three URLs: `['http://example.com', 'https://warning.com', 'http://danger.il']`. If a user attempts to post any of these URLs, the post will not be published.
 
-## Dependencies:
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- Body-parser
-- jsonwebtoken
+# Cloud Setup Instructions
 
-## Installation:
+## Deployment Steps
 
-1. Clone the repository from GitHub:
-   git clone https://github.com/edenbdv/Facebook_clone-Server.git
+1. **Launch an EC2 Instance**  
+   - Use an **Amazon Linux 2 AMI**.  
+   - Configure security groups to allow access to:
+     - **Port 3000** (frontend).
+     - **Port 12346** (backend).
+     - **Port 27017** (database).
+     - **Port 22** (SSH).  
+   - Download the `.pem` key file for SSH access.  
 
+2. **Connect to the Instance**  
+   - SSH into the instance:
+     ```bash
+     ssh -i <keyfile>.pem ec2-user@<instance-public-ip>
+     ```
+   - Install Docker and Git:
+     ```bash
+     sudo yum update -y
+     sudo yum install -y docker git
+     sudo service docker start
+     sudo usermod -aG docker ec2-user
+     ```
 
-2. Checkout to branch 'users'
+3. **Clone the Repository and Run Docker Compose**  
+   - Clone your repository:
+     ```bash
+     git clone <repository-url>
+     cd <repository-directory>
+     ```
+   - Build and deploy the application:
+     ```bash
+     docker-compose up --build -d
+     ```
+4. **Update IP Addresses in Configuration Files**
+   - Change IP_ADDRESS_BF_SERVER and IP_CLIENT in the backend environment configuration file (app/config/.env) to the public IP of the EC2 instance.
+   - Update the client IP in client/sec/config.js to the public IP of the EC2 instance as well.
 
+6. **Access the Application**  
+   - Open `http://<instance-public-ip>:3000` in a browser to access the frontend.
+
+     
+
+# Local Setup Instructions
+
+## Steps to Set Up Locally with Docker
+
+1. **Clone the Repository**  
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+
+2. **Update IP Addresses in Configuration Files**
+   - Change IP_ADDRESS_BF_SERVER and IP_CLIENT in the backend environment configuration file (app/config/.env) to `localhost`for local development.
+   - Update the client IP in client/sec/config.js to `localhost` as well.
+
+4. **Run the Application Using Docker Compose**
+   ```bash
+   docker-compose up --build
    
-3. Navigate into the project directory:
-   cd Facebook_clone-Server
+ and then access the application at http://localhost:3000 in your browser.
 
-   
-4. Install dependencies using npm:
-   npm install
+## Locally Without Docker
 
-## Running the Server:
-
--**important note**: you will also need to clone and run the bloom-filter server (the web server comminucates with it) 
-you can see the instructuins for it right here:
-Bloom-Filter server: https://github.com/edenbdv/BloomFilter.git
-
-1. Before starting the server, ensure that the environment variables in config/bloom_filter_config.env are properly configured for your current environment. For instance, for using the BloomFilter server, make sure to update the IP_ADDRESS_BF_SERVER variable accordingly.
-You can verify the connections in app.js and InintializeDB.js
-
-2. Open MongoDB on your computer.
-
-3. To start the server, run the following command:
- ```bash
-node app.js
-
+Follow the detailed instructions in the original repositories for the Bloom Filter, backend server, and client, in the following order. You can run all the code in one repo, as shown here (in which case you must follow the paths for this repo instead of the original), or you can run each repo separately.
    ```
 ### Important Note:
 When you run the server for the first time, a JavaScript script will set up the database with default users, their posts, and comments. After the process completes, you will see the message "Database initialized with default users and their posts." Please make sure that there are no existing collections named `users`, `posts`, or `comments`.
