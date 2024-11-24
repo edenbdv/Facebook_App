@@ -190,7 +190,7 @@ This user-friendly interface ensures that managing personal profiles and social 
 ## Locally Without Docker
 
 Follow the detailed instructions in the original repositories for the Bloom Filter, backend server, and client, in the following order. You can run all the code in one repo, as shown here (in which case you must follow the paths for this repo instead of the original), or you can run each repo separately.
-   ```
+  
 ### Important Note:
 When you run the server for the first time, a JavaScript script will set up the database with default users, their posts, and comments. After the process completes, you will see the message "Database initialized with default users and their posts." Please make sure that there are no existing collections named `users`, `posts`, or `comments`.
 
