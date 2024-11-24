@@ -21,7 +21,6 @@ function App() {
     }
   }, []);
 
-  console.log("ip:", config.server.ip); // This will log the IP address
 
 
   return (
